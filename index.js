@@ -6,12 +6,13 @@ import {EScreens} from './src/types/enums/EScreens';
 import MainScreen from './src/screens/main/MainScreen';
 import AddActivityScreen from './src/screens/addActivity/AddActivityScreen';
 import {withNavigationProvider} from 'react-native-navigation-hooks/dist';
+import WrappedComponent from './src/redux/WrappedComponent';
 
 Navigation.registerComponent(EScreens.Main, () =>
-  withNavigationProvider(MainScreen),
+  withNavigationProvider(WrappedComponent(MainScreen)),
 );
 Navigation.registerComponent(EScreens.AddActivity, () =>
-  withNavigationProvider(AddActivityScreen),
+  withNavigationProvider(WrappedComponent(AddActivityScreen)),
 );
 
 Navigation.events().registerAppLaunchedListener(() => {
