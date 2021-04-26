@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef} from 'react';
-import {View} from 'react-native-ui-lib';
+import {View, Text} from 'react-native-ui-lib';
 import {
   useNavigation,
   withNavigationProvider,
@@ -47,12 +47,19 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   return (
     <View flex useSafeArea testID="main-screen">
       <View flex padding-s4>
-        <FlatList
-          data={activitiesKeys}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          showsVerticalScrollIndicator={false}
-        />
+        {activitiesKeys.length ? (
+          <FlatList
+            data={activitiesKeys}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            showsVerticalScrollIndicator={false}
+          />
+        ) : (
+          <View center marginT-s4>
+            <Text text70BO>You have no activities</Text>
+            <Text marginT-s4>To add an activity press + button</Text>
+          </View>
+        )}
       </View>
     </View>
   );

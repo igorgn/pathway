@@ -45,10 +45,10 @@ const AddActivityScreenComponent = () => {
   return (
     <View flex useSafeArea>
       <View padding-s4 flex>
-        <Text text60 marginB-s3>
-          Activity name
+        <Text text70BO marginB-s3>
+          Enter activity name:
         </Text>
-        <TextField onChangeText={handleChangeText} error={error} />
+        <TextField onChangeText={handleChangeText} error={error} autoFocus />
         <Button onPress={add} bg-grey40 label="Add activity" />
       </View>
     </View>
