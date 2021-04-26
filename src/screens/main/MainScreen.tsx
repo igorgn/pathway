@@ -13,6 +13,8 @@ import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import icons from '../../assets/icons/icons';
 import WrappedComponent from '../../redux/WrappedComponent';
 
+const TAB_BAR_BUTTON_ID = 'AddActivity';
+
 const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   const {push} = useNavigation();
   const {activities, activitiesKeys} = useSelector(selectActivities);
@@ -32,7 +34,7 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
     if (!navListener.current) {
       navListener.current = Navigation.events().registerNavigationButtonPressedListener(
         event => {
-          if (event.componentId === componentId) {
+          if (event.buttonId === TAB_BAR_BUTTON_ID) {
             push(EScreens.AddActivity);
           }
         },
@@ -77,7 +79,7 @@ MainScreen.options = {
     rightButtons: [
       {
         icon: icons.buttons.add,
-        id: 'AddActivity',
+        id: TAB_BAR_BUTTON_ID,
       },
     ],
   },
