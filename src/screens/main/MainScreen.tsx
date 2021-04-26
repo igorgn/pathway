@@ -1,18 +1,77 @@
-import React from 'react';
-import {View, Text, Button} from 'react-native';
-import {useNavigation} from 'react-native-navigation-hooks/dist';
+import React, {useCallback, useEffect, useRef} from 'react';
+import {View} from 'react-native-ui-lib';
+import {
+  useNavigation,
+  withNavigationProvider,
+} from 'react-native-navigation-hooks/dist';
 import {EScreens} from '../../types/enums/EScreens';
+import {useSelector} from 'react-redux';
+import {selectActivities} from '../../redux/activities/activitiesSelectors';
+import ActivityItem from './components/ActivityItem';
+import {EmitterSubscription, FlatList, ListRenderItem} from 'react-native';
+import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
+import icons from '../../assets/icons/icons';
+import WrappedComponent from '../../redux/WrappedComponent';
 
-const MainScreen = () => {
+const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   const {push} = useNavigation();
-  const openAddActivity = () => push(EScreens.AddActivity);
+  const {activities, activitiesKeys} = useSelector(selectActivities);
+
+  const renderItem: ListRenderItem<string> = useCallback(
+    ({item}) => (
+      <ActivityItem key={activities[item].name} activity={activities[item]} />
+    ),
+    [activities],
+  );
+
+  const keyExtractor = useCallback((item: string) => item, []);
+
+  const navListener = useRef<null | EmitterSubscription>(null);
+
+  useEffect(() => {
+    if (!navListener.current) {
+      navListener.current = Navigation.events().registerNavigationButtonPressedListener(
+        event => {
+          if (event.componentId === componentId) {
+            push(EScreens.AddActivity);
+          }
+        },
+      );
+    }
+
+    return () => {
+      navListener.current?.remove();
+    };
+  }, [componentId, push]);
 
   return (
-    <View testID="main-screen">
-      <Text>Main Screen</Text>
-      <Button onPress={openAddActivity} title={'Add activity'} />
+    <View flex useSafeArea testID="main-screen">
+      <View flex padding-s4>
+        <FlatList
+          data={activitiesKeys}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
     </View>
   );
 };
 
+const MainScreen = withNavigationProvider(
+  WrappedComponent(MainScreenComponent),
+);
+
 export default MainScreen;
+
+MainScreen.options = {
+  topBar: {
+    title: {text: 'Activities'},
+    rightButtons: [
+      {
+        icon: icons.buttons.add,
+        id: 'AddActivity',
+      },
+    ],
+  },
+};

@@ -7,18 +7,28 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "watch-test": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "detox-android": "detox build --configuration android.debug && detox test --configuration android.debug",
     "detox-ios": "detox build --configuration ios.debug && detox test --configuration ios.debug"
   },
   "dependencies": {
+    "@react-native-community/blur": "^3.6.0",
+    "@react-native-community/datetimepicker": "^3.4.6",
+    "@react-native-community/netinfo": "^6.0.0",
+    "@react-native-picker/picker": "^1.15.0",
     "@reduxjs/toolkit": "^1.5.1",
+    "date-fns": "^2.21.1",
     "detox": "^18.12.0",
     "jest-circus": "^26.6.3",
     "react": "17.0.1",
     "react-native": "0.64.0",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-navigation": "^7.13.0",
     "react-native-navigation-hooks": "^6.3.0",
+    "react-native-reanimated": "^2.1.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-ui-lib": "^5.22.2",
     "react-redux": "^7.2.3"
   },
   "devDependencies": {
