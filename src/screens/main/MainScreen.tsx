@@ -12,8 +12,9 @@ import {EmitterSubscription, FlatList, ListRenderItem} from 'react-native';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import icons from '../../assets/icons/icons';
 import WrappedComponent from '../../redux/WrappedComponent';
+import testIDs from '../../utils/testIDs';
 
-const TAB_BAR_BUTTON_ID = 'AddActivity';
+export const TAB_BAR_BUTTON_ID = 'AddActivity';
 
 const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   const {push} = useNavigation();
@@ -47,7 +48,7 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   }, [componentId, push]);
 
   return (
-    <View flex useSafeArea testID="main-screen">
+    <View flex useSafeArea testID={testIDs.mainScreen}>
       <View flex padding-s4>
         {activitiesKeys.length ? (
           <FlatList
@@ -55,6 +56,7 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
             renderItem={renderItem}
             keyExtractor={keyExtractor}
             showsVerticalScrollIndicator={false}
+            testID={testIDs.activitiesList}
           />
         ) : (
           <View center marginT-s4>
@@ -80,6 +82,7 @@ MainScreen.options = {
       {
         icon: icons.buttons.add,
         id: TAB_BAR_BUTTON_ID,
+        testID: testIDs.addActivityTabBarButton,
       },
     ],
   },

@@ -8,6 +8,7 @@ import {
   withNavigationProvider,
 } from 'react-native-navigation-hooks/dist';
 import WrappedComponent from '../../redux/WrappedComponent';
+import testIDs from '../../utils/testIDs';
 
 const AddActivityScreenComponent = () => {
   const {pop, mergeOptions} = useNavigation();
@@ -43,13 +44,23 @@ const AddActivityScreenComponent = () => {
   }, [mergeOptions]);
 
   return (
-    <View flex useSafeArea>
+    <View flex useSafeArea testID={testIDs.addActivityScreen}>
       <View padding-s4 flex>
         <Text text70BO marginB-s3>
           Enter activity name:
         </Text>
-        <TextField onChangeText={handleChangeText} error={error} autoFocus />
-        <Button onPress={add} bg-grey40 label="Add activity" />
+        <TextField
+          onChangeText={handleChangeText}
+          error={error}
+          autoFocus
+          testID={testIDs.activityNameInput}
+        />
+        <Button
+          onPress={add}
+          bg-grey40
+          label="Add activity"
+          testID={testIDs.addActivityScreenButton}
+        />
       </View>
     </View>
   );
