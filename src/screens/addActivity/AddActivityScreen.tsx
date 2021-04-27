@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectActivities} from '../../redux/activities/activitiesSelectors';
-import {addActivity} from '../../redux/activities/activitiesReducer';
 import {Button, View, Text, TextField} from 'react-native-ui-lib';
 import {
   useNavigation,
@@ -9,6 +8,7 @@ import {
 } from 'react-native-navigation-hooks/dist';
 import WrappedComponent from '../../redux/WrappedComponent';
 import testIDs from '../../utils/testIDs';
+import addActivity from '../../redux/activities/thunks/addActivity';
 
 const AddActivityScreenComponent = () => {
   const {pop, mergeOptions} = useNavigation();

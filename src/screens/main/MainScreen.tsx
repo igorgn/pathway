@@ -5,7 +5,7 @@ import {
   withNavigationProvider,
 } from 'react-native-navigation-hooks/dist';
 import {EScreens} from '../../types/enums/EScreens';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {selectActivities} from '../../redux/activities/activitiesSelectors';
 import ActivityItem from './components/ActivityItem';
 import {EmitterSubscription, FlatList, ListRenderItem} from 'react-native';
@@ -13,13 +13,14 @@ import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import icons from '../../assets/icons/icons';
 import WrappedComponent from '../../redux/WrappedComponent';
 import testIDs from '../../utils/testIDs';
+import getActivities from '../../redux/activities/thunks/getActivites';
 
 export const TAB_BAR_BUTTON_ID = 'AddActivity';
 
 const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   const {push} = useNavigation();
   const {activities, activitiesKeys} = useSelector(selectActivities);
-
+  const dispatch = useDispatch();
   const renderItem: ListRenderItem<string> = useCallback(
     ({item}) => (
       <ActivityItem key={activities[item].name} activity={activities[item]} />
@@ -46,6 +47,10 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
       navListener.current?.remove();
     };
   }, [componentId, push]);
+
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
 
   return (
     <View flex useSafeArea testID={testIDs.mainScreen}>

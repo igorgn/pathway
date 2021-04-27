@@ -4,7 +4,7 @@ import {AnyAction} from 'redux';
 import activitiesReducer, {
   addActivity,
   initialActivitiesState,
-} from '../../../src/redux/activities/activitiesReducer';
+} from '../../../src/redux/activities/activitiesSlice';
 import {selectActivities} from '../../../src/redux/activities/activitiesSelectors';
 
 // describe('activities slice', () => {

@@ -18,3 +18,8 @@ export interface Activity {
   name: string;
   months: ActivityMonth;
 }
+
+export interface Activities {
+  activities: Record<string, Activity>;
+  activitiesKeys: string[];
+}
