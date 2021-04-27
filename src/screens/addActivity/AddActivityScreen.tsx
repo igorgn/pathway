@@ -17,6 +17,7 @@ const AddActivityScreenComponent = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
+  // generic and not clear naming, could be improved.
   const add = useCallback(() => {
     if (!name) {
       setError('Enter name of activity');
@@ -30,17 +31,21 @@ const AddActivityScreenComponent = () => {
     pop();
   }, [activitiesKeys, dispatch, name, pop]);
 
+  // naming can also be improved here as well
   const handleChangeText = useCallback((text: string) => {
     setError('');
     setName(text);
   }, []);
 
   useEffect(() => {
+    // the code bellow could be extracted to navigation-utils.ts, e.g. setTopBar(options: object), or even setTopBarTitle(title: string)
     mergeOptions({
       topBar: {
+        // All of the strings could be moved to constants at the top of the file. Also, this specific string is duplicated bellow.
         title: {text: 'Add activity'},
       },
     });
+    // are you sure about using functions as dependencies?
   }, [mergeOptions]);
 
   return (
@@ -66,10 +71,12 @@ const AddActivityScreenComponent = () => {
   );
 };
 
+// There is duplication in all of the screens when wrapping ad hocs. You can create a common screen wrapper function which would use all of these wrappers required for all screens (redux & navigation), and then use this common wrapper when registering screens at /index.js.
 const AddActivityScreen = withNavigationProvider(
   WrappedComponent(AddActivityScreenComponent),
 );
 
+// same comment about default exports
 export default AddActivityScreen;
 
 AddActivityScreen.options = {

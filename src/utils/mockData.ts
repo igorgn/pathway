@@ -1,3 +1,4 @@
+// Please separate code utils from test utils, we usualy have utils specific for tests, under test-utils or smth, and regular utils for code, where code and tests do not share functions between them.
 import {ActivityWeek} from '../types/interfaces/Activities';
 
 const day1 = new Date();

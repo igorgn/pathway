@@ -1,3 +1,4 @@
+//there is inconsistency in file naming convention,  this file name begins with Capital leter, while other dont. Please make this consistent across all files to use kebab-case.
 export interface ActivityDay {
   dayKey: string;
   weekKey: string;

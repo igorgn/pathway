@@ -10,6 +10,7 @@ interface Props {
 }
 
 const DayItem = ({day: {completed, dayKey}, onPress}: Props) => {
+  // Here, in this component useMemo is not needed, because the dependecy dayKey is a component prop, which is already wrapped with useMemo. So if this prop will change, a render will be valid, therefore no need to memoize local functions.
   const active = useMemo(() => isThisMonth(new Date(dayKey)), [dayKey]);
 
   return (
@@ -25,6 +26,7 @@ const DayItem = ({day: {completed, dayKey}, onPress}: Props) => {
   );
 };
 
+// same comment about default exports
 export default React.memo(DayItem);
 
 const styles = ({completed, active}: {completed: boolean; active: boolean}) =>

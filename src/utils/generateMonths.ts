@@ -1,3 +1,5 @@
+// generally we use kebab-case for both directory and file names, i.e. generate-months.ts
+// Same comment about separating test and code utils.
 import {
   endOfMonth,
   startOfMonth,

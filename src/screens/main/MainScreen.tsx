@@ -28,9 +28,10 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   );
 
   const keyExtractor = useCallback((item: string) => item, []);
-
+  // lets use verbose names rather than shorthand versions that can create confusion
   const navListener = useRef<null | EmitterSubscription>(null);
 
+  // this all code including navListener could be extracted to a separate hook, into navigation-utils.hooks.tsx if its reusable, so it would accept callback function as an argument, so the usage would look like: useNavigationButtonPressed((buttonId: string) => Void)
   useEffect(() => {
     if (!navListener.current) {
       navListener.current = Navigation.events().registerNavigationButtonPressedListener(
@@ -45,8 +46,12 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
     return () => {
       navListener.current?.remove();
     };
+    // why componentId as dependency?
+    // why push as dependency?
   }, [componentId, push]);
 
+  // the render function bellow could be split into 2 functions: renderActivityList() and renderEmptyState(), which would make code more readable. (Note: not separate components, just local functions)
+  // same comment about inline strings.
   return (
     <View flex useSafeArea testID={testIDs.mainScreen}>
       <View flex padding-s4>
@@ -69,10 +74,12 @@ const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
   );
 };
 
+// same comment about common screen wrapper.
 const MainScreen = withNavigationProvider(
   WrappedComponent(MainScreenComponent),
 );
 
+// same comment about default exports
 export default MainScreen;
 
 MainScreen.options = {
