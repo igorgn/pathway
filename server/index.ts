@@ -1,9 +1,9 @@
 import express from 'express';
 import fs from 'fs';
 import bodyParser from 'body-parser';
-import {Activities} from '../src/types/interfaces/Activities';
-import generateMonths from '../src/utils/generateMonths';
-import {MarkCompletedPayload} from '../src/types/interfaces/MarkCompletedPayload';
+import {Activities} from '../src/types/interfaces/activities';
+import generateMonths from '../src/utils/generate-months';
+import {MarkCompletedPayload} from '../src/types/interfaces/mark-completed-payload';
 
 const app = express();
 

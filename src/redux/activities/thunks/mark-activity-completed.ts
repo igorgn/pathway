@@ -1,10 +1,10 @@
 import axios from 'axios';
-import {Activities} from '../../../types/interfaces/Activities';
-import {MarkCompletedPayload} from '../../../types/interfaces/MarkCompletedPayload';
-import {RootThunk} from '../../store';
-import {markActivity} from '../activitiesSlice';
+import {Activities} from '../../../types/interfaces/activities';
+import {MarkCompletedPayload} from '../../../types/interfaces/mark-completed-payload';
+import {RootThunk} from '../../reduxStore';
+import {markActivity} from '../activities-slice';
 
-const markActivityCompleted = (
+export const markActivityCompleted = (
   payload: MarkCompletedPayload,
 ): RootThunk => async dispatch => {
   dispatch(markActivity(payload));
@@ -18,5 +18,3 @@ const markActivityCompleted = (
     dispatch(markActivity(payload));
   }
 };
-
-export default markActivityCompleted;

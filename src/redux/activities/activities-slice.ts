@@ -1,28 +1,21 @@
 import {CaseReducer, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Activities} from '../../types/interfaces/Activities';
-import {MarkCompletedPayload} from '../../types/interfaces/MarkCompletedPayload';
+import {Activities} from '../../types/interfaces/activities';
+import {MarkCompletedPayload} from '../../types/interfaces/mark-completed-payload';
 
-interface State extends Activities {}
-
-export const initialActivitiesState: State = {
+const initialActivitiesState: Activities = {
   activities: {},
   activitiesKeys: [],
 };
 
-const initialState: State = {
-  activities: {},
-  activitiesKeys: [],
-};
-
-const setActivitiesReducer: CaseReducer<State, PayloadAction<Activities>> = (
-  state,
-  action,
-) => {
+const setActivitiesReducer: CaseReducer<
+  Activities,
+  PayloadAction<Activities>
+> = (state, action) => {
   return {...state, ...action.payload};
 };
 
 const markActivityReducer: CaseReducer<
-  State,
+  Activities,
   PayloadAction<MarkCompletedPayload>
 > = (state, {payload: {dayKey, name, weekKey}}) => {
   const day = state.activities[name].months.weeks[weekKey].days[dayKey];
@@ -31,7 +24,7 @@ const markActivityReducer: CaseReducer<
 
 export const activitiesSlice = createSlice({
   name: 'activities',
-  initialState,
+  initialState: initialActivitiesState,
   reducers: {
     setActivities: setActivitiesReducer,
     markActivity: markActivityReducer,
@@ -40,4 +33,4 @@ export const activitiesSlice = createSlice({
 
 export const {setActivities, markActivity} = activitiesSlice.actions;
 
-export default activitiesSlice.reducer;
+export const activitiesReducer = activitiesSlice.reducer;

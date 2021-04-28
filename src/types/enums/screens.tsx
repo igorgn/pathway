@@ -1,4 +1,4 @@
-export enum EScreens {
+export enum Screens {
   Main = 'Main',
   AddActivity = 'AddActivity',
 }

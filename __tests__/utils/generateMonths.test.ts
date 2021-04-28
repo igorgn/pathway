@@ -1,14 +1,14 @@
 /* eslint-env  jest */
 
-import {ActivityDay, ActivityWeek} from '../../src/types/interfaces/Activities';
+import {ActivityDay, ActivityWeek} from '../../src/types/interfaces/activities';
 import generateMonths, {
   formatDay,
   formatDays,
   formatWeek,
   generateKey,
   generateKeysArr,
-} from '../../src/utils/generateMonths';
-import {formatWeeksMockData} from '../../src/utils/mockData';
+} from '../../src/utils/generate-months';
+import {formatWeeksMockData} from '../mock-data/mock-data';
 
 describe('generate month object consisting of week and weeks consisting of days', () => {
   it('should return date string e.g.: 2021-04-01', () => {

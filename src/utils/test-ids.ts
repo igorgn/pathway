@@ -1,4 +1,4 @@
-const testIDs = {
+export const testIDs = {
   mainScreen: 'mainScreen',
   addActivityTabBarButton: 'addActivityTabBarButton',
   addActivityScreen: 'addActivityScreen',
@@ -6,4 +6,3 @@ const testIDs = {
   addActivityScreenButton: 'addActivityScreenButton',
   activitiesList: 'activitiesList',
 };
-export default testIDs;

@@ -5,18 +5,16 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
-import activitiesSlice from './activities/activitiesSlice';
+import {activitiesReducer} from './activities/activities-slice';
 
 const rootReducer = combineReducers({
-  activities: activitiesSlice,
+  activities: activitiesReducer,
 });
 
-const store = configureStore({reducer: rootReducer});
+export const reduxStore = configureStore({reducer: rootReducer});
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type RootThunk = ThunkAction<void, RootState, unknown, Action<string>>;
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof reduxStore.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
-
-export default store;

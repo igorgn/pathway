@@ -10,7 +10,7 @@ import {
   ActivityDay,
   ActivityMonth,
   ActivityWeek,
-} from '../types/interfaces/Activities';
+} from '../types/interfaces/activities';
 
 const DATE_FORMAT = 'yyyy-MM-dd';
 const DAYS_TO_ADD_TO_WEEK = 6;

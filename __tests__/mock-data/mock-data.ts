@@ -1,4 +1,4 @@
-import {ActivityWeek} from '../types/interfaces/Activities';
+import {ActivityWeek} from '../../src/types/interfaces/activities';
 
 const day1 = new Date();
 const day2 = new Date();
