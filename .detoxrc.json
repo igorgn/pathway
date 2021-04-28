@@ -4,6 +4,7 @@
   "apps": {
     "ios.debug": {
       "type": "ios.app",
+      "comment": "binaryPath should have a relative path as it now works only on your machine",
       "binaryPath": "/Users/vladislavt/Library/Developer/Xcode/DerivedData/pathway-dqjvddktbwxmasekbqrfuztocufm/Build/Products/Debug-iphonesimulator/pathway.app",
       "build": "xcodebuild -workspace ios/pathway.xcworkspace -configuration Debug -scheme pathway -destination id=8B8F32A3-C1FD-40FF-B43E-6B6ADA93FB2F"
     },

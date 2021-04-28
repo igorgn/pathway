@@ -25,3 +25,7 @@ Navigation.events().registerAppLaunchedListener(() => {
 });
 
 AppRegistry.registerComponent(appName, () => MainScreen);
+
+// Overall comment:
+// Looks quite good, can't remember anything major that would be an issue.
+// Excited to see how you deal with component tests

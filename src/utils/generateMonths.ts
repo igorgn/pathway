@@ -13,6 +13,7 @@ import {
 } from '../types/interfaces/Activities';
 
 const DATE_FORMAT = 'yyyy-MM-dd';
+// I don't follow what's the following variable, could you explain?
 const DAYS_TO_ADD_TO_WEEK = 6;
 
 export const generateKey = (date: Date) => format(date, DATE_FORMAT);

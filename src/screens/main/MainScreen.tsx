@@ -17,6 +17,7 @@ import testIDs from '../../utils/testIDs';
 export const TAB_BAR_BUTTON_ID = 'AddActivity';
 
 const MainScreenComponent: NavigationFunctionComponent = ({componentId}) => {
+  // wrapping navigation with abstraction could be a nice touch
   const {push} = useNavigation();
   const {activities, activitiesKeys} = useSelector(selectActivities);
 

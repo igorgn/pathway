@@ -28,6 +28,8 @@ const DayItem = ({day: {completed, dayKey}, onPress}: Props) => {
 export default React.memo(DayItem);
 
 const styles = ({completed, active}: {completed: boolean; active: boolean}) =>
+  // I wonder whether this creates a new instance every time you call it.
+  // If so this may result in useless re-renders
   StyleSheet.create({
     container: {
       borderWidth: 1,
