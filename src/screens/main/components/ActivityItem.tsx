@@ -2,7 +2,7 @@ import {format} from 'date-fns';
 import React, {useCallback} from 'react';
 import {Alert} from 'react-native';
 import {Text, View} from 'react-native-ui-lib';
-import deleteActivity from '../../../redux/activities/thunks/addActivity';
+import deleteActivity from '../../../redux/activities/thunks/deleteActivity';
 import markActivityCompleted from '../../../redux/activities/thunks/markActivityCompleted';
 import {useAppDispatch} from '../../../redux/store';
 import {Activity} from '../../../types/interfaces/Activities';

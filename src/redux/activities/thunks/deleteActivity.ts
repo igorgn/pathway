@@ -3,13 +3,13 @@ import {Activities} from '../../../types/interfaces/Activities';
 import {RootThunk} from '../../store';
 import {setActivities} from '../activitiesSlice';
 
-const addActivity = (name: string): RootThunk => async dispatch => {
-  const {data} = await axios.post<Activities>(
+const deleteActivity = (name: string): RootThunk => async dispatch => {
+  const {data} = await axios.delete<Activities>(
     'http://localhost:3000/activities',
-    {name},
+    {data: {name}},
   );
 
   dispatch(setActivities(data));
 };
 
-export default addActivity;
+export default deleteActivity;
