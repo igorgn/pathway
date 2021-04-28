@@ -8,7 +8,7 @@ import generateMonths, {
   generateKey,
   generateKeysArr,
 } from '../../src/utils/generate-months';
-import {formatWeeksMockData} from '../mock-data/mock-data';
+import {formatWeeksMockData} from '../../test-utils/mock-data/format-weeks-mock-data';
 
 describe('generate month object consisting of week and weeks consisting of days', () => {
   it('should return date string e.g.: 2021-04-01', () => {
