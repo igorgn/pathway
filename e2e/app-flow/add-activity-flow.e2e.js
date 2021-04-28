@@ -1,6 +1,6 @@
 /* eslint-env detox/detox, jest */
 
-const {default: testIDs} = require('../../../src/utils/test-ids');
+const {testIDs} = require('../../src/utils/test-ids');
 
 describe('Add activity flow', () => {
   beforeAll(async () => {
