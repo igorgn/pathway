@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "detox-android": "detox build --configuration android.debug && detox test --configuration android.debug",
     "detox-ios": "detox build --configuration ios.debug && detox test --configuration ios.debug",
-    "server": "nodemon server/index.ts"
+    "server": "nodemon server/server.ts"
   },
   "dependencies": {
     "@react-native-community/blur": "^3.6.0",
@@ -20,10 +20,8 @@
     "@react-native-picker/picker": "^1.15.0",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
     "date-fns": "^2.21.1",
-    "detox": "^18.12.0",
-    "jest-circus": "^26.6.3",
+    "lodash": "^4.17.21",
     "react": "17.0.1",
     "react-native": "0.64.0",
     "react-native-gesture-handler": "^1.10.3",
@@ -35,14 +33,21 @@
     "react-redux": "^7.2.3"
   },
   "devDependencies": {
+    "detox": "^18.12.0",
+    "jest-circus": "^26.6.3",
+    "node-fetch": "^2.6.1",
+    "@types/node-fetch": "^2.5.10",
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.168",
     "@types/node": "^15.0.0",
     "@types/react-native": "^0.64.0",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/superagent": "^4.1.10",
+    "@types/supertest": "^2.0.11",
     "babel-jest": "^26.6.3",
     "eslint": "^7.14.0",
     "eslint-plugin-detox": "^1.0.0",
@@ -50,6 +55,8 @@
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
     "react-test-renderer": "17.0.1",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.3",
     "ts-node": "^9.1.1",
     "typescript": "^3.8.3"
   },
@@ -65,6 +72,11 @@
       "jsx",
       "json",
       "node"
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "server/data/*"
     ]
   }
 }

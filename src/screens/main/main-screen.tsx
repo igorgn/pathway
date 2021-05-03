@@ -19,7 +19,7 @@ const strings = {
 };
 
 const MainScreenComponent = () => {
-  const {activities, activitiesKeys} = useSelector(selectActivities);
+  const {activities, activitiesIDs} = useSelector(selectActivities);
   const dispatch = useDispatch();
   useNavigationButtonPressed(TAB_BAR_BUTTON_ID);
 
@@ -39,14 +39,14 @@ const MainScreenComponent = () => {
   const renderActivityList = useCallback(
     () => (
       <FlatList
-        data={activitiesKeys}
+        data={activitiesIDs}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         testID={testIDs.activitiesList}
       />
     ),
-    [activitiesKeys, keyExtractor, renderItem],
+    [activitiesIDs, keyExtractor, renderItem],
   );
 
   const renderEmptyState = useCallback(
@@ -62,7 +62,7 @@ const MainScreenComponent = () => {
   return (
     <View flex useSafeArea testID={testIDs.mainScreen}>
       <View flex padding-s4>
-        {activitiesKeys.length ? renderActivityList() : renderEmptyState()}
+        {activitiesIDs.length ? renderActivityList() : renderEmptyState()}
       </View>
     </View>
   );

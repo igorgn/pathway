@@ -1,79 +1,46 @@
 import {
   endOfMonth,
-  startOfMonth,
   eachDayOfInterval,
   format,
   eachWeekOfInterval,
-  addDays,
+  endOfWeek,
 } from 'date-fns';
-import {
-  ActivityDay,
-  ActivityMonth,
-  ActivityWeek,
-} from '../types/interfaces/activities';
+import {eachMonthOfInterval} from 'date-fns/esm';
+import {constants} from './constants';
 
-const DATE_FORMAT = 'yyyy-MM-dd';
-const DAYS_TO_ADD_TO_WEEK = 6;
+export const generateIDs = (dates: Date[]) =>
+  dates.map(day => format(day, constants.DAY_ID_DATE_FORMAT));
 
-export const generateKey = (date: Date) => format(date, DATE_FORMAT);
-
-export const generateKeysArr = (dates: Date[]) =>
-  dates.map(day => format(day, DATE_FORMAT));
-
-export const formatDay = (dayKey: string, weekKey: string): ActivityDay => ({
-  dayKey,
-  weekKey,
-  completed: false,
-});
-
-export const formatDays = (dates: Date[], weekKey: string) => {
-  return dates.reduce((acc, cv) => {
-    const dayKey = generateKey(cv);
-    return {
-      ...acc,
-      [dayKey]: formatDay(dayKey, weekKey),
-    };
-  }, {});
-};
-
-export const formatWeek = (days: Date[], weekKey: string): ActivityWeek => {
-  return {
-    keys: generateKeysArr(days),
-    days: formatDays(days, weekKey),
-  };
-};
-
-export const formatWeeks = (weeks: Date[]): Record<string, ActivityWeek> => {
-  return weeks.reduce((acc, cv) => {
-    const weekKey = generateKey(cv);
+const formatWeeks = (weeks: Date[]) =>
+  weeks.map(firstDayOfAWeek => {
+    const lastDayOfAWeek = endOfWeek(firstDayOfAWeek);
     const days = eachDayOfInterval({
-      start: cv,
-      end: addDays(cv, DAYS_TO_ADD_TO_WEEK),
+      start: firstDayOfAWeek,
+      end: lastDayOfAWeek,
     });
 
-    return {
-      ...acc,
-      [weekKey]: formatWeek(days, weekKey),
-    };
-  }, {});
-};
+    return generateIDs(days);
+  });
 
-const generateMonths = (day: Date): ActivityMonth => {
-  const firstDayOfAMonth = startOfMonth(new Date(day));
-  const lastDayOfAMonth = endOfMonth(firstDayOfAMonth);
+const formatMonths = (months: Date[]) =>
+  months.map(fistDayOfAMonth => {
+    const lastDayOfAMonth = endOfMonth(fistDayOfAMonth);
 
-  const weeks = eachWeekOfInterval(
-    {
-      start: firstDayOfAMonth,
+    const weeks = eachWeekOfInterval({
+      start: fistDayOfAMonth,
       end: lastDayOfAMonth,
-    },
-    {weekStartsOn: 1},
-  );
+    });
+    return {weeks: formatWeeks(weeks), weeksIDs: generateIDs(weeks)};
+  });
 
-  return {
-    keys: generateKeysArr(weeks),
-    weeks: formatWeeks(weeks),
-  };
+export const generateMonths = (daysIDs: string[]) => {
+  const startDay = daysIDs[0] || new Date();
+  const endDay = daysIDs[daysIDs.length - 1] || new Date();
+
+  const months = eachMonthOfInterval({
+    start: new Date(startDay),
+    end: new Date(endDay),
+  });
+
+  return {moths: formatMonths(months), monthsIDs: generateIDs(months)};
 };
-
-export default generateMonths;

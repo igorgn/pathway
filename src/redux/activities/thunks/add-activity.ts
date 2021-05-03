@@ -1,13 +1,11 @@
 import axios from 'axios';
-import {Activities} from '../../../types/interfaces/activities';
+import {Activity} from '../../../../types/interfaces/activities';
+import {endpoints} from '../../../utils/endpoints';
 import {RootThunk} from '../../reduxStore';
-import {setActivities} from '../activities-slice';
+import {addActivities} from '../activities-slice';
 
 export const addActivity = (name: string): RootThunk => async dispatch => {
-  const {data} = await axios.post<Activities>(
-    'http://localhost:3000/activities',
-    {name},
-  );
+  const {data} = await axios.post<Activity>(endpoints.activities, {name});
 
-  dispatch(setActivities(data));
+  dispatch(addActivities(data));
 };

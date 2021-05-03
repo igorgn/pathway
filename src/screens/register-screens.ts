@@ -1,5 +1,5 @@
 import {Navigation} from 'react-native-navigation';
-import {Screens} from '../types/enums/screens';
+import {Screens} from '../../types/enums/screens';
 import {AddActivityScreen} from './add-activity/add-activity-screen';
 import {MainScreen} from './main/main-screen';
 

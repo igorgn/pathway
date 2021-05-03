@@ -15,7 +15,7 @@ const strings = {
 
 const AddActivityScreenComponent = () => {
   const {pop} = useNavigation();
-  const {activitiesKeys} = useSelector(selectActivities);
+  const {activitiesIDs} = useSelector(selectActivities);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -25,13 +25,13 @@ const AddActivityScreenComponent = () => {
       setError(strings.enterNameOfActivity);
       return;
     }
-    if (activitiesKeys.includes(name)) {
+    if (activitiesIDs.includes(name)) {
       setError(strings.suchActivityAlreadyExists);
       return;
     }
     dispatch(addActivity(name));
     pop();
-  }, [activitiesKeys, dispatch, name, pop]);
+  }, [activitiesIDs, dispatch, name, pop]);
 
   const handleNameFieldChange = useCallback((text: string) => {
     setError('');

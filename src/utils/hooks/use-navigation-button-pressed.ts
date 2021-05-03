@@ -2,7 +2,7 @@ import {useEffect, useRef} from 'react';
 import {EmitterSubscription} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {useNavigation} from 'react-native-navigation-hooks/dist';
-import {Screens} from '../../types/enums/screens';
+import {Screens} from '../../../types/enums/screens';
 
 export const useNavigationButtonPressed = (buttonId: string) => {
   const {push} = useNavigation();
