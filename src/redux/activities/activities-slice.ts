@@ -1,8 +1,7 @@
 import {CaseReducer, createSlice, PayloadAction} from '@reduxjs/toolkit';
-
-import {markActivityDay} from '../../../server/utils/activities/mark-activity-day';
 import {Activities, Activity} from '../../../types/interfaces/activities';
 import {PatchActivityBody} from '../../../types/interfaces/patch-activity-body';
+import {markActivityDay} from '../../utils/mark-activity-day';
 
 const initialActivitiesState: Activities = {
   activities: {},

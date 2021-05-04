@@ -5,6 +5,7 @@ import {Button, View, Text, TextField} from 'react-native-ui-lib';
 import {addActivity} from '../../redux/activities/thunks/add-activity';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {withReduxProvider} from '../../redux/with-redux-provider';
+import {findActivityFromName} from '../../utils/find-activity-from-name';
 
 const strings = {
   enterNameOfActivity: 'Enter name of activity',
@@ -22,7 +23,7 @@ export const ADD_ACTIVITY_SCREEN_TEST_IDS = {
 export const AddActivityScreenComponent: NavigationFunctionComponent = ({
   componentId,
 }) => {
-  const {activitiesIDs} = useSelector(selectActivities);
+  const activities = useSelector(selectActivities);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -33,7 +34,7 @@ export const AddActivityScreenComponent: NavigationFunctionComponent = ({
       return;
     }
 
-    if (activitiesIDs.includes(name)) {
+    if (findActivityFromName(activities, name)) {
       setError(strings.suchActivityAlreadyExists);
       return;
     }
@@ -41,7 +42,7 @@ export const AddActivityScreenComponent: NavigationFunctionComponent = ({
     dispatch(addActivity(name));
 
     Navigation.pop(componentId);
-  }, [activitiesIDs, componentId, dispatch, name]);
+  }, [activities, componentId, name]);
 
   const handleNameFieldChange = useCallback((text: string) => {
     setError('');

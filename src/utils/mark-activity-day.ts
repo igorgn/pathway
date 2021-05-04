@@ -1,6 +1,6 @@
-import {Activities} from '../../../types/interfaces/activities';
-import {PatchActivityBody} from '../../../types/interfaces/patch-activity-body';
 import {cloneDeep} from 'lodash';
+import {Activities} from '../../types/interfaces/activities';
+import {PatchActivityBody} from '../../types/interfaces/patch-activity-body';
 import {createActivityDay} from './create-activity-day';
 
 export const markActivityDay = (

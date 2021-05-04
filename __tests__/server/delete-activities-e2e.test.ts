@@ -27,7 +27,7 @@ describe('delete activities e2e', () => {
 
   it('Should respond with activity empty activities', async () => {
     await writeToTestActivities(
-      mockActivitiesStorageData.oneActivityZeroDaysCompleted,
+      mockActivitiesStorageData.oneActivityOneDayCompleted,
     );
 
     const response = await requestDeleteActivity();
