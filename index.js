@@ -1,12 +1,11 @@
 import {Navigation} from 'react-native-navigation';
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import {EScreens} from './src/types/enums/EScreens';
-import MainScreen from './src/screens/main/MainScreen';
-import AddActivityScreen from './src/screens/addActivity/AddActivityScreen';
+import {Screens} from './types/enums/screens';
+import MainScreen from './src/screens/main/main-screen';
+import {registerScreens} from './src/screens/register-screens';
 
-Navigation.registerComponent(EScreens.Main, () => MainScreen);
-Navigation.registerComponent(EScreens.AddActivity, () => AddActivityScreen);
+registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
@@ -15,7 +14,7 @@ Navigation.events().registerAppLaunchedListener(() => {
         children: [
           {
             component: {
-              name: EScreens.Main,
+              name: Screens.Main,
             },
           },
         ],
