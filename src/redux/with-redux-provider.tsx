@@ -5,14 +5,16 @@ import {
 } from 'react-native-navigation';
 import {Provider} from 'react-redux';
 import {reduxStore} from './reduxStore';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 export const withReduxProvider = (Component: NavigationFunctionComponent) => {
-  return <T extends NavigationComponentProps>(props: T) => {
-    const EnhancedComponent = () => (
-      <Provider store={reduxStore}>
-        <Component {...props} />
-      </Provider>
-    );
-    return <EnhancedComponent />;
-  };
+  const EnhancedComponent = (props: NavigationComponentProps) => (
+    <Provider store={reduxStore}>
+      <Component {...props} />
+    </Provider>
+  );
+
+  hoistNonReactStatics(EnhancedComponent, Component);
+
+  return EnhancedComponent;
 };

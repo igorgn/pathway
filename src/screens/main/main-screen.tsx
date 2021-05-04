@@ -7,8 +7,9 @@ import {FlatList, ListRenderItem} from 'react-native';
 import {icons} from '../../assets/icons/icons';
 import {testIDs} from '../../utils/test-ids';
 import {getActivities} from '../../redux/activities/thunks/get-activities';
-import {withAppProviders} from '../with-app-providers';
 import {useNavigationButtonPressed} from '../../utils/hooks/use-navigation-button-pressed';
+import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
+import {Screens} from '../../../types/enums/screens';
 
 export const TAB_BAR_BUTTON_ID = 'AddActivity';
 
@@ -18,57 +19,71 @@ const strings = {
   toAddAnActivity: 'To add an activity press + button',
 };
 
-const MainScreenComponent = () => {
-  const {activities, activitiesIDs} = useSelector(selectActivities);
-  const dispatch = useDispatch();
-  useNavigationButtonPressed(TAB_BAR_BUTTON_ID);
+export const MainScreen: NavigationFunctionComponent = React.memo(
+  ({componentId}) => {
+    const {activities, activitiesIDs} = useSelector(selectActivities);
+    const dispatch = useDispatch();
 
-  const renderItem: ListRenderItem<string> = useCallback(
-    ({item}) => (
-      <ActivityItem key={activities[item].name} activity={activities[item]} />
-    ),
-    [activities],
-  );
+    const pushAddActivityScreen = useCallback(
+      (buttonId: string) => {
+        if (buttonId) {
+          Navigation.push(componentId, {
+            component: {name: Screens.AddActivity},
+          });
+        }
+      },
+      [componentId],
+    );
 
-  const keyExtractor = useCallback((item: string) => item, []);
+    useNavigationButtonPressed(pushAddActivityScreen);
 
-  useEffect(() => {
-    dispatch(getActivities());
-  }, [dispatch]);
+    const renderItem: ListRenderItem<string> = useCallback(
+      ({item}) => (
+        <ActivityItem key={activities[item].name} activity={activities[item]} />
+      ),
+      [activities],
+    );
 
-  const renderActivityList = useCallback(
-    () => (
-      <FlatList
-        data={activitiesIDs}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        showsVerticalScrollIndicator={false}
-        testID={testIDs.activitiesList}
-      />
-    ),
-    [activitiesIDs, keyExtractor, renderItem],
-  );
+    const keyExtractor = useCallback((item: string) => item, []);
 
-  const renderEmptyState = useCallback(
-    () => (
-      <View center marginT-s4>
-        <Text text70BO>{strings.youHaveNoActivities}</Text>
-        <Text marginT-s4>{strings.toAddAnActivity}</Text>
+    useEffect(() => {
+      dispatch(getActivities());
+    }, []);
+
+    useEffect(() => {}, []);
+
+    const renderActivityList = useCallback(
+      () => (
+        <FlatList
+          data={activitiesIDs}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          showsVerticalScrollIndicator={false}
+          testID={testIDs.activitiesList}
+        />
+      ),
+      [activitiesIDs, keyExtractor, renderItem],
+    );
+
+    const renderEmptyState = useCallback(
+      () => (
+        <View center marginT-s4>
+          <Text text70BO>{strings.youHaveNoActivities}</Text>
+          <Text marginT-s4>{strings.toAddAnActivity}</Text>
+        </View>
+      ),
+      [],
+    );
+
+    return (
+      <View flex useSafeArea testID={testIDs.mainScreen}>
+        <View flex padding-s4>
+          {activitiesIDs.length ? renderActivityList() : renderEmptyState()}
+        </View>
       </View>
-    ),
-    [],
-  );
-
-  return (
-    <View flex useSafeArea testID={testIDs.mainScreen}>
-      <View flex padding-s4>
-        {activitiesIDs.length ? renderActivityList() : renderEmptyState()}
-      </View>
-    </View>
-  );
-};
-
-export const MainScreen = withAppProviders(MainScreenComponent);
+    );
+  },
+);
 
 MainScreen.options = {
   topBar: {

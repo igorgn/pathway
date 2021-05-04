@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-import {activitiesMockData} from '../../test-utils/activities-mock-data';
 import {Server} from 'node:http';
 import {initializeServer} from '../../server/server-app';
 import {envVariables} from '../../server/env/envVariables';
@@ -27,7 +26,9 @@ describe('delete activities e2e', () => {
   });
 
   it('Should respond with activity empty activities', async () => {
-    await writeToTestActivities(activitiesMockData);
+    await writeToTestActivities(
+      mockActivitiesStorageData.oneActivityOneDayCompleted,
+    );
 
     const response = await requestDeleteActivity();
 

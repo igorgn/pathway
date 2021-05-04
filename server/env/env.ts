@@ -1,5 +1,5 @@
 export const env = {
-  isTest: false,
+  isTest: true,
   setIsTest: function (isTest: boolean) {
     this.isTest = isTest;
   },
