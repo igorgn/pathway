@@ -1,8 +1,8 @@
 import {Activity} from '../../../types/interfaces/activities';
 
-export const createActivity = (name: string): Activity => ({
+export const createActivity = (name: string, id: string): Activity => ({
   daysIDs: [],
-  id: name,
+  id,
   name,
   days: {},
 });

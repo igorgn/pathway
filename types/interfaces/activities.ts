@@ -11,10 +11,10 @@ export interface Activity {
 }
 
 export interface ActivityMonths {
-  moths: ActivityWeeks[];
+  moths: ActivityMonth[];
   monthsIDs: string[];
 }
-export interface ActivityWeeks {
+export interface ActivityMonth {
   weeks: string[][];
   weeksIDs: string[];
 }

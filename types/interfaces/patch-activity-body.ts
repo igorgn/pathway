@@ -1,4 +1,4 @@
 export interface PatchActivityBody {
-  name: string;
+  id: string;
   dayID: string;
 }

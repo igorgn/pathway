@@ -13,8 +13,8 @@ const addActivityReducer: CaseReducer<Activities, PayloadAction<Activity>> = (
   state,
   {payload},
 ) => {
-  state.activities[payload.name] = payload;
-  state.activitiesIDs.push(payload.name);
+  state.activities[payload.id] = payload;
+  state.activitiesIDs.push(payload.id);
 };
 
 const setActivitiesReducer: CaseReducer<
@@ -28,6 +28,7 @@ const markActivityReducer: CaseReducer<
   Activities,
   PayloadAction<PatchActivityBody>
 > = (state, {payload}) => {
+  console.log(payload);
   return (state = markActivityDay(state, payload));
 };
 

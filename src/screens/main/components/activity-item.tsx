@@ -14,7 +14,7 @@ import {markActivityCompleted} from '../../../redux/activities/thunks/mark-activ
 import {useAppDispatch} from '../../../redux/redux-store';
 import {
   Activity,
-  ActivityWeeks,
+  ActivityMonth,
   ActivityMonths,
 } from '../../../../types/interfaces/activities';
 import {generateMonths} from '../../../utils/generate-months';
@@ -46,7 +46,7 @@ interface ActivityItemProps {
 }
 
 export const ActivityItem = React.memo(
-  ({activity: {name, daysIDs, days}}: ActivityItemProps) => {
+  ({activity: {name, daysIDs, days, id}}: ActivityItemProps) => {
     const dispatch = useAppDispatch();
     const months: ActivityMonths = useMemo(() => generateMonths(daysIDs), [
       daysIDs,
@@ -68,9 +68,9 @@ export const ActivityItem = React.memo(
 
     const markDay = useCallback(
       (dayID: string) => {
-        dispatch(markActivityCompleted({name, dayID}));
+        dispatch(markActivityCompleted({id, dayID}));
       },
-      [name],
+      [id],
     );
 
     const handleDelete = useCallback(() => {
@@ -82,11 +82,11 @@ export const ActivityItem = React.memo(
         },
         {
           text: strings.delete,
-          onPress: () => dispatch(deleteActivity(name)),
+          onPress: () => dispatch(deleteActivity(id)),
           style: 'destructive',
         },
       ]);
-    }, [name]);
+    }, [name, id]);
 
     const renderWeekRow = useCallback(
       (weeks: string[], index: number) => (
@@ -101,7 +101,7 @@ export const ActivityItem = React.memo(
       [activeMonth, days, markDay],
     );
 
-    const renderMonths: ListRenderItem<ActivityWeeks> = useCallback(
+    const renderMonths: ListRenderItem<ActivityMonth> = useCallback(
       ({item: {weeks}, index}) => (
         <View paddingH-s2 key={index} style={styles.monthContainer}>
           {weeks.map(renderWeekRow)}

@@ -1,3 +1,7 @@
+jest.mock('uuid', () => {
+  return {v4: () => 'test-uuid'};
+});
+
 jest.mock('react-native-navigation', () => {
   return {Navigation: {pop: () => {}}};
 });

@@ -37,7 +37,7 @@ describe('post activities e2e', () => {
 
     expect(data).toEqual(
       mockActivitiesStorageData.oneActivityZeroDaysCompleted.activities[
-        mockActivitiesStorageData.activityName
+        mockActivitiesStorageData.id
       ],
     );
   });

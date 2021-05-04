@@ -5,23 +5,23 @@ import {createActivityDay} from './create-activity-day';
 
 export const markActivityDay = (
   activities: Activities,
-  {name, dayID}: PatchActivityBody,
+  {id, dayID}: PatchActivityBody,
 ) => {
-  const completedDays = activities.activities[name].daysIDs;
+  const completedDays = activities.activities[id].daysIDs;
   const isDayCompleted = completedDays.includes(dayID);
 
   const activitiesCopy: Activities = cloneDeep(activities);
 
   if (isDayCompleted) {
-    activitiesCopy.activities[name].daysIDs = sortDays(
+    activitiesCopy.activities[id].daysIDs = sortDays(
       filterDayCompleted(completedDays, dayID),
     );
-    delete activitiesCopy.activities[name].days[dayID];
+    delete activitiesCopy.activities[id].days[dayID];
   } else {
-    activitiesCopy.activities[name].daysIDs = sortDays(
+    activitiesCopy.activities[id].daysIDs = sortDays(
       addCompletedDay(completedDays, dayID),
     );
-    activitiesCopy.activities[name].days[dayID] = createActivityDay(dayID);
+    activitiesCopy.activities[id].days[dayID] = createActivityDay(dayID);
   }
 
   return activitiesCopy;

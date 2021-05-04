@@ -11,7 +11,7 @@ describe('delete activities e2e', () => {
   const requestDeleteActivity = () =>
     fetch('http://localhost:3000/activities', {
       method: 'DELETE',
-      body: JSON.stringify({name: mockActivitiesStorageData.activityName}),
+      body: JSON.stringify({id: mockActivitiesStorageData.id}),
       headers: {'Content-Type': 'application/json'},
     });
 

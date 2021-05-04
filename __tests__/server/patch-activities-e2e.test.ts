@@ -12,7 +12,7 @@ describe('patch activities e2e', () => {
     fetch('http://localhost:3000/activities', {
       method: 'PATCH',
       body: JSON.stringify({
-        name: mockActivitiesStorageData.activityName,
+        id: mockActivitiesStorageData.id,
         dayID: mockActivitiesStorageData.dayToMark,
       }),
       headers: {'Content-Type': 'application/json'},
@@ -42,7 +42,7 @@ describe('patch activities e2e', () => {
 
     expect(data).toEqual(
       mockActivitiesStorageData.oneActivityOneDayCompleted.activities[
-        mockActivitiesStorageData.activityName
+        mockActivitiesStorageData.id
       ],
     );
   });
@@ -60,7 +60,7 @@ describe('patch activities e2e', () => {
 
     expect(data).toEqual(
       mockActivitiesStorageData.oneActivityZeroDaysCompleted.activities[
-        mockActivitiesStorageData.activityName
+        mockActivitiesStorageData.id
       ],
     );
   });

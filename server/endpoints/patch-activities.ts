@@ -4,7 +4,7 @@ import {readActivities} from '../utils/storage/read-activities';
 import {writeActivities} from '../utils/storage/write-activities';
 import {markActivityDay} from '../utils/activities/mark-activity-day';
 import {PatchActivityBody} from '../../types/interfaces/patch-activity-body';
-import {findActivity} from '../utils/activities/find-activity';
+import {findActivityFromId} from '../utils/activities/find-activity-from-id';
 import {endpoints} from '../utils/endpoints';
 
 export const patchActivitiesHandler = (server: ServerApp) => {
@@ -13,7 +13,7 @@ export const patchActivitiesHandler = (server: ServerApp) => {
 
     const activities = await readActivities();
 
-    if (!findActivity(activities, requestBody.name)) {
+    if (!findActivityFromId(activities, requestBody.id)) {
       res.status(409).send({errorMessage: 'Activity not found'});
       return;
     }
@@ -21,6 +21,6 @@ export const patchActivitiesHandler = (server: ServerApp) => {
     const newActivities: Activities = markActivityDay(activities, requestBody);
 
     await writeActivities(newActivities);
-    res.send(findActivity(newActivities, requestBody.name));
+    res.send(findActivityFromId(newActivities, requestBody.id));
   });
 };

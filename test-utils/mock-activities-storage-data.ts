@@ -7,21 +7,21 @@ const emptyActivities: Activities = {
 
 const oneActivityZeroDaysCompleted: Activities = {
   activities: {
-    ['Yoga']: {
+    ['test-uuid']: {
       daysIDs: [],
-      id: 'Yoga',
+      id: 'test-uuid',
       name: 'Yoga',
       days: {},
     },
   },
-  activitiesIDs: ['Yoga'],
+  activitiesIDs: ['test-uuid'],
 };
 
 const oneActivityOneDayCompleted: Activities = {
   activities: {
-    ['Yoga']: {
+    ['test-uuid']: {
       daysIDs: ['2021-05-01'],
-      id: 'Yoga',
+      id: 'test-uuid',
       name: 'Yoga',
       days: {
         '2021-05-01': {
@@ -31,7 +31,7 @@ const oneActivityOneDayCompleted: Activities = {
       },
     },
   },
-  activitiesIDs: ['Yoga'],
+  activitiesIDs: ['test-uuid'],
 };
 
 export const mockActivitiesStorageData = {
@@ -40,4 +40,5 @@ export const mockActivitiesStorageData = {
   oneActivityOneDayCompleted,
   activityName: 'Yoga',
   dayToMark: '2021-05-01',
+  id: 'test-uuid',
 };
