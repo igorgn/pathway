@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Activities} from '../../../../types/interfaces/activities';
 import {PatchActivityBody} from '../../../../types/interfaces/patch-activity-body';
 import {endpoints} from '../../../utils/endpoints';
-import {RootThunk} from '../../reduxStore';
+import {RootThunk} from '../../redux-store';
 import {markActivity} from '../activities-slice';
 
 export const markActivityCompleted = (

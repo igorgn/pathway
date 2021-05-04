@@ -7,11 +7,14 @@ import {
 import {useDispatch} from 'react-redux';
 import {activitiesReducer} from './activities/activities-slice';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   activities: activitiesReducer,
 });
 
-export const reduxStore = configureStore({reducer: rootReducer});
+export const createStore = (initialState?: RootState) =>
+  configureStore({reducer: rootReducer, preloadedState: initialState});
+
+export const reduxStore = createStore();
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type RootThunk = ThunkAction<void, RootState, unknown, Action<string>>;

@@ -5,6 +5,11 @@ import {Text, View} from 'react-native-ui-lib';
 import {ActivityDay} from '../../../../types/interfaces/activities';
 
 const DATE_FORMAT = 'dd';
+
+export const DAY_ITEM_TEST_IDS = {
+  CONTAINER: 'DAY_ITEM_CONTAINER',
+};
+
 interface DayItemProps {
   day?: ActivityDay;
   dayID: string;
@@ -20,7 +25,7 @@ export const DayItem = React.memo(
     const completed = !!day?.completed;
 
     return (
-      <Pressable onPress={markDay}>
+      <Pressable onPress={markDay} testID={DAY_ITEM_TEST_IDS.CONTAINER}>
         <View
           center
           marginV-10
@@ -33,6 +38,7 @@ export const DayItem = React.memo(
   },
 );
 
+// todo change to not to recreate instance
 const styles = ({completed, active}: {completed: boolean; active: boolean}) => {
   return StyleSheet.create({
     container: {

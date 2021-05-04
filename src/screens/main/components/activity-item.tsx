@@ -11,7 +11,7 @@ import {
 import {Text, View} from 'react-native-ui-lib';
 import {deleteActivity} from '../../../redux/activities/thunks/delete-activity';
 import {markActivityCompleted} from '../../../redux/activities/thunks/mark-activity-completed';
-import {useAppDispatch} from '../../../redux/reduxStore';
+import {useAppDispatch} from '../../../redux/redux-store';
 import {
   Activity,
   ActivityWeeks,
@@ -22,12 +22,19 @@ import {WeekRow} from './week-row';
 import {useSnapHorizontalFlatList} from '../../../utils/hooks/use-months-list-handler';
 import {constants} from '../../../utils/constants';
 
+export const ACTIVITY_ITEM_TEST_IDS = {
+  CONTAINER: 'CONTAINER',
+};
+
 const CALENDAR_WIDTH = Dimensions.get('window').width - 32;
 
 const DATE_FORMAT = 'MMMM';
 
 const strings = {
   delete: 'Delete',
+  deleteActivity: (name: string) => `Delete activity "${name}"`,
+  actionIrreversible: 'This action is irreversible',
+  cancel: 'Cancel',
 };
 
 const CURRENT_MONTH_ID = format(
@@ -67,14 +74,14 @@ export const ActivityItem = React.memo(
     );
 
     const handleDelete = useCallback(() => {
-      Alert.alert(`Delete activity "${name}"`, 'This action is irreversible', [
+      Alert.alert(strings.deleteActivity(name), strings.actionIrreversible, [
         {
-          text: 'Cancel',
+          text: strings.cancel,
           onPress: () => null,
           style: 'cancel',
         },
         {
-          text: 'Delete',
+          text: strings.delete,
           onPress: () => dispatch(deleteActivity(name)),
           style: 'destructive',
         },
@@ -104,7 +111,7 @@ export const ActivityItem = React.memo(
     );
 
     return (
-      <View marginB-s4>
+      <View marginB-s4 testID={ACTIVITY_ITEM_TEST_IDS.CONTAINER}>
         <View row spread>
           <View>
             <Text text60BO>{name}</Text>

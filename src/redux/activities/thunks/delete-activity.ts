@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {Activities} from '../../../../types/interfaces/activities';
 import {endpoints} from '../../../utils/endpoints';
-import {RootThunk} from '../../reduxStore';
+import {RootThunk} from '../../redux-store';
 import {setActivities} from '../activities-slice';
 
 export const deleteActivity = (name: string): RootThunk => async dispatch => {
