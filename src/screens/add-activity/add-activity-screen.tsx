@@ -4,7 +4,6 @@ import {selectActivities} from '../../redux/activities/activities-selectors';
 import {Button, View, Text, TextField} from 'react-native-ui-lib';
 import {addActivity} from '../../redux/activities/thunks/add-activity';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
-import {withReduxProvider} from '../../redux/with-redux-provider';
 import {findActivityFromName} from '../../utils/find-activity-from-name';
 
 const strings = {
@@ -20,7 +19,7 @@ export const ADD_ACTIVITY_SCREEN_TEST_IDS = {
   CTA: 'CTA',
 };
 
-export const AddActivityScreenComponent: NavigationFunctionComponent = ({
+export const AddActivityScreen: NavigationFunctionComponent = ({
   componentId,
 }) => {
   const activities = useSelector(selectActivities);
@@ -72,10 +71,6 @@ export const AddActivityScreenComponent: NavigationFunctionComponent = ({
     </View>
   );
 };
-
-export const AddActivityScreen: NavigationFunctionComponent = withReduxProvider(
-  AddActivityScreenComponent,
-);
 
 AddActivityScreen.options = {
   topBar: {
