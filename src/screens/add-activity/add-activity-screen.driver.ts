@@ -2,17 +2,17 @@ import {Action, Store} from 'redux';
 import {ReduxComponentDriver} from 'redux-component-driver';
 import {RootState} from '../../redux/redux-store';
 import {
-  AddActivityScreenComponent,
+  AddActivityScreen,
   ADD_ACTIVITY_SCREEN_TEST_IDS,
 } from './add-activity-screen';
 
 export class AddActivityScreenDriver extends ReduxComponentDriver<
-  typeof AddActivityScreenComponent,
+  typeof AddActivityScreen,
   RootState,
   Action<any>
 > {
   constructor(store: Store) {
-    super(AddActivityScreenComponent, store);
+    super(AddActivityScreen, store);
   }
 
   getTextInput() {
