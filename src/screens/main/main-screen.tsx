@@ -11,7 +11,12 @@ import {useNavigationButtonPressed} from '../../utils/hooks/use-navigation-butto
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {Screens} from '../../../types/enums/screens';
 
-export const TAB_BAR_BUTTON_ID = 'AddActivity';
+export const MAIN_SCREEN_TEST_IDS = {
+  TAB_BAR_BUTTON: 'TAB_BAR_BUTTON',
+  EMPTY_STATE_CONTAINER: 'EMPTY_STATE_CONTAINER',
+  EMPTY_STATE_TITLE: 'EMPTY_STATE_TITLE',
+  EMPTY_STATE_LABEL: 'EMPTY_STATE_LABEL',
+};
 
 const strings = {
   activities: 'Activities',
@@ -91,7 +96,7 @@ MainScreen.options = {
     rightButtons: [
       {
         icon: icons.buttons.add,
-        id: TAB_BAR_BUTTON_ID,
+        id: MAIN_SCREEN_TEST_IDS.TAB_BAR_BUTTON,
         testID: testIDs.addActivityTabBarButton,
       },
     ],

@@ -6,7 +6,7 @@ import {
   ADD_ACTIVITY_SCREEN_TEST_IDS,
 } from './add-activity-screen';
 
-export class MainScreenDriver extends ReduxComponentDriver<
+export class AddActivityScreenDriver extends ReduxComponentDriver<
   typeof AddActivityScreenComponent,
   RootState,
   Action<any>
