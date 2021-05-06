@@ -7,7 +7,9 @@ import {ActivityDay} from '../../../../types/interfaces/activities';
 const DATE_FORMAT = 'dd';
 
 export const DAY_ITEM_TEST_IDS = {
-  CONTAINER: 'DAY_ITEM_CONTAINER',
+  LABEL: 'DAY_ITEM_LABEL',
+  VIEW_CONTAINER: 'DAY_ITEM_VIEW_CONTAINER',
+  PRESSABELE: 'DAY_ITEM_PRESSABELE',
 };
 
 interface DayItemProps {
@@ -15,23 +17,29 @@ interface DayItemProps {
   dayID: string;
   onPress: (dayID: string) => void;
   activeMonth: string;
+  activityID: string;
 }
 
 export const DayItem = React.memo(
-  ({day, dayID, onPress, activeMonth}: DayItemProps) => {
+  ({day, dayID, onPress, activeMonth, activityID}: DayItemProps) => {
     const active = isSameMonth(new Date(dayID), new Date(activeMonth));
 
     const markDay = () => (active ? onPress(dayID) : null);
     const completed = !!day?.completed;
 
     return (
-      <Pressable onPress={markDay} testID={DAY_ITEM_TEST_IDS.CONTAINER}>
+      <Pressable
+        onPress={markDay}
+        testID={`${DAY_ITEM_TEST_IDS.PRESSABELE}.${activityID}-${dayID}`}>
         <View
           center
           marginV-10
           br100
-          style={styles({completed, active}).container}>
-          <Text>{format(new Date(dayID), DATE_FORMAT)}</Text>
+          style={styles({completed, active}).container}
+          testID={`${DAY_ITEM_TEST_IDS.VIEW_CONTAINER}.${activityID}-${dayID}`}>
+          <Text testID={`${DAY_ITEM_TEST_IDS.LABEL}.${activityID}-${dayID}`}>
+            {format(new Date(dayID), DATE_FORMAT)}
+          </Text>
         </View>
       </Pressable>
     );

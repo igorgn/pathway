@@ -12,10 +12,9 @@ import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {Screens} from '../../../types/enums/screens';
 
 export const MAIN_SCREEN_TEST_IDS = {
-  TAB_BAR_BUTTON: 'TAB_BAR_BUTTON',
-  EMPTY_STATE_CONTAINER: 'EMPTY_STATE_CONTAINER',
-  EMPTY_STATE_TITLE: 'EMPTY_STATE_TITLE',
-  EMPTY_STATE_LABEL: 'EMPTY_STATE_LABEL',
+  TAB_BAR_BUTTON: 'MAIN_SCREEN_TAB_BAR_BUTTON',
+  EMPTY_STATE_CONTAINER: 'MAIN_SCREEN_EMPTY_STATE_CONTAINER',
+  ACTIVITIES_LIST: 'MAIN_SCREEN_ACTIVITIES_LIST',
 };
 
 const strings = {
@@ -64,7 +63,7 @@ export const MainScreen: NavigationFunctionComponent = React.memo(
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           showsVerticalScrollIndicator={false}
-          testID={testIDs.activitiesList}
+          testID={MAIN_SCREEN_TEST_IDS.ACTIVITIES_LIST}
         />
       ),
       [activitiesIDs, keyExtractor, renderItem],
@@ -72,7 +71,10 @@ export const MainScreen: NavigationFunctionComponent = React.memo(
 
     const renderEmptyState = useCallback(
       () => (
-        <View center marginT-s4>
+        <View
+          center
+          marginT-s4
+          testID={MAIN_SCREEN_TEST_IDS.EMPTY_STATE_CONTAINER}>
           <Text text70BO>{strings.youHaveNoActivities}</Text>
           <Text marginT-s4>{strings.toAddAnActivity}</Text>
         </View>

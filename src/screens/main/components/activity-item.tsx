@@ -19,11 +19,14 @@ import {
 } from '../../../../types/interfaces/activities';
 import {generateMonths} from '../../../utils/generate-months';
 import {WeekRow} from './week-row';
-import {useSnapHorizontalFlatList} from '../../../utils/hooks/use-months-list-handler';
+import {useSnapHorizontalFlatList} from '../../../utils/hooks/use-snap-horizontal-flat-list';
 import {constants} from '../../../utils/constants';
 
 export const ACTIVITY_ITEM_TEST_IDS = {
-  CONTAINER: 'CONTAINER',
+  NAME_LABEL: 'ACTIVITY_ITEM_NAME_LABEL',
+  MONTH_LABEL: 'ACTIVITY_ITEM_MONTH_LABEL',
+  DELETE_BUTTON: 'ACTIVITY_ITEM_DELETE_BUTTON',
+  CARD: 'ACTIVITY_ITEM_CARD',
 };
 
 const CALENDAR_WIDTH = Dimensions.get('window').width - 32;
@@ -96,9 +99,10 @@ export const ActivityItem = React.memo(
           onPress={markDay}
           weeks={weeks}
           key={index}
+          activityID={id}
         />
       ),
-      [activeMonth, days, markDay],
+      [activeMonth, days, id, markDay],
     );
 
     const renderMonths: ListRenderItem<ActivityMonth> = useCallback(
@@ -111,13 +115,23 @@ export const ActivityItem = React.memo(
     );
 
     return (
-      <View marginB-s4 testID={ACTIVITY_ITEM_TEST_IDS.CONTAINER}>
+      <View marginB-s4 testID={`${ACTIVITY_ITEM_TEST_IDS.CARD}.${id}`}>
         <View row spread>
           <View>
-            <Text text60BO>{name}</Text>
-            <Text text80>{format(new Date(activeMonth), DATE_FORMAT)}</Text>
+            <Text
+              text60BO
+              testID={`${ACTIVITY_ITEM_TEST_IDS.NAME_LABEL}.${id}`}>
+              {name}
+            </Text>
+            <Text text80 testID={`${ACTIVITY_ITEM_TEST_IDS.MONTH_LABEL}.${id}`}>
+              {format(new Date(activeMonth), DATE_FORMAT)}
+            </Text>
           </View>
-          <Text text80 red30 onPress={handleDelete}>
+          <Text
+            text80
+            red30
+            onPress={handleDelete}
+            testID={`${ACTIVITY_ITEM_TEST_IDS.DELETE_BUTTON}.${id}`}>
             {strings.delete}
           </Text>
         </View>

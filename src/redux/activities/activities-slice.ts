@@ -27,7 +27,6 @@ const markActivityReducer: CaseReducer<
   Activities,
   PayloadAction<PatchActivityBody>
 > = (state, {payload}) => {
-  console.log(payload);
   return (state = markActivityDay(state, payload));
 };
 

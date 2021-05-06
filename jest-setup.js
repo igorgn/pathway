@@ -1,9 +1,29 @@
+jest.mock(
+  './node_modules/react-native/Libraries/Animated/NativeAnimatedHelper',
+);
+jest.mock('axios');
+
 jest.mock('uuid', () => {
   return {v4: () => 'test-uuid'};
 });
 
+jest.mock('react-native', () => {
+  const ReactNative = jest.requireActual('react-native');
+  const Alert = {alert: jest.fn()};
+
+  return Object.setPrototypeOf(
+    {
+      Alert,
+    },
+    ReactNative,
+  );
+});
+
 jest.mock('react-native-navigation', () => {
-  return {Navigation: {pop: () => {}}};
+  const events = () => ({
+    registerNavigationButtonPressedListener: () => {},
+  });
+  return {Navigation: {pop: () => {}, push: () => {}, events}};
 });
 
 jest.mock('react-native-ui-lib', () => {

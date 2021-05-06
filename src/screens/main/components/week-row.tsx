@@ -9,10 +9,11 @@ interface WeekRowProps {
   activeMonth: string;
   days: Record<string, ActivityDay>;
   onPress: (dayID: string) => void;
+  activityID: string;
 }
 
 export const WeekRow = React.memo(
-  ({weeks, activeMonth, onPress, days}: WeekRowProps) => {
+  ({weeks, activeMonth, onPress, days, activityID}: WeekRowProps) => {
     return (
       <View flex row spread>
         {weeks.map(dayID => (
@@ -22,6 +23,7 @@ export const WeekRow = React.memo(
             day={days[dayID]}
             activeMonth={activeMonth}
             onPress={onPress}
+            activityID={activityID}
           />
         ))}
       </View>
