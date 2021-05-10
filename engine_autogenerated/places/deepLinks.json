@@ -1,0 +1,57 @@
+[
+  {
+    "linkPattern": "core/login",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/renewPremium",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/updateMessage/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/editWebsite/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/websiteEditorView/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/mobilePlaceStrength/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/club/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/upgrade/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/announcements/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "roles/contributors",
+    "externalPatterns": [
+      "wix://roles/contributors"
+    ],
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId/:tab",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboardAllUsers/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  }
+]

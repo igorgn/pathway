@@ -1,0 +1,93 @@
+[
+  {
+    "linkPattern": "owners/premium/upgrade/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/quickActions/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/dashboard/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/editWebsite/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/manage/mobileWebBanner/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/setupSite/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/manage/permissions/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "owners/platforms/:metaSiteId",
+    "moduleName": "wix-owners-app-platform"
+  },
+  {
+    "linkPattern": "core/login",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/renewPremium",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/updateMessage/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/editWebsite/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/websiteEditorView/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/mobilePlaceStrength/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/upgrade/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/announcements/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "roles/contributors",
+    "externalPatterns": [
+      "wix://roles/contributors"
+    ],
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId/overview",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId/setup",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "platform/dashboard/:metaSiteId/manage",
+    "moduleName": "@wix/wix-one-app-platform"
+  },
+  {
+    "linkPattern": "memberView/customizer/:metaSiteId",
+    "moduleName": "wix-one-app-member-view"
+  }
+]

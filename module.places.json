@@ -1,0 +1,19 @@
+{
+  "name": "one-app-module-habits",
+  "prefix": "one-app-module-habits",
+  "components": [
+    "one-app-module-habits.MainScreen",
+    "one-app-module-habits.AddActivityScreen"
+  ],
+  "hasTabs": false,
+  "consumedServices": [
+    "quickActions"
+  ],
+  "hasDemoInit": false,
+  "hasManagerApps": false,
+  "hasClientApps": false,
+  "hasInstallableApps": false,
+  "hasQuickActions": false,
+  "hasActivityScreens": false,
+  "dbSchemes": {}
+}

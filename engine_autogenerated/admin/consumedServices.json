@@ -1,0 +1,19 @@
+{
+  "quickActions": [
+    "one-app-module-habits",
+    "wix-owners-app-platform"
+  ],
+  "wix.owners.manageItems": [
+    "wix-owners-app-platform"
+  ],
+  "wix.platform.dashboardWidgetsService": [
+    "wix-owners-app-platform",
+    "@wix/wix-one-app-platform"
+  ],
+  "ownerShortcuts": [
+    "wix-owners-app-platform"
+  ],
+  "contacts.profileWidgetsService": [
+    "@wix/wix-one-app-platform"
+  ]
+}

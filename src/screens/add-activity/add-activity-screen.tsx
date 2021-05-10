@@ -1,10 +1,11 @@
 import React, {useCallback, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectActivities} from '../../redux/activities/activities-selectors';
-import {Button, View, Text, TextField} from 'react-native-ui-lib';
+import {Button, View, Text, TextField} from 'wix-react-native-ui-lib';
 import {addActivity} from '../../redux/activities/thunks/add-activity';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {findActivityFromName} from '../../utils/find-activity-from-name';
+import {withReduxProvider} from '../../redux/with-redux-provider';
 
 const strings = {
   enterNameOfActivity: 'Enter name of activity',
@@ -19,7 +20,7 @@ export const ADD_ACTIVITY_SCREEN_TEST_IDS = {
   CTA: 'CTA',
 };
 
-export const AddActivityScreen: NavigationFunctionComponent = ({
+const AddActivityScreenComponent: NavigationFunctionComponent = ({
   componentId,
 }) => {
   const activities = useSelector(selectActivities);
@@ -71,6 +72,8 @@ export const AddActivityScreen: NavigationFunctionComponent = ({
     </View>
   );
 };
+
+export const AddActivityScreen = withReduxProvider(AddActivityScreenComponent);
 
 AddActivityScreen.options = {
   topBar: {

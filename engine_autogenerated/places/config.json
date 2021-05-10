@@ -1,0 +1,12 @@
+{
+  "platformModule": "@wix/wix-one-app-platform",
+  "modules": [
+    "one-app-module-habits",
+    "@wix/wix-one-app-platform",
+    "demo-tab-module",
+    "wix-one-app-member-view"
+  ],
+  "tabs": [
+    "demoTab"
+  ]
+}

@@ -1,0 +1,1 @@
+module.exports = { compose: () => () => () => {}, hoistStatics: jest.fn(), withProps: jest.fn(), withHandlers: jest.fn(), withState: jest.fn(), lifecycle: jest.fn(), renderComponent: jest.fn(), branch: jest.fn() };

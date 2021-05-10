@@ -1,0 +1,12 @@
+{
+  "modes": {
+    "loggedOut": "wix-owners-app-platform",
+    "place": "wix-owners-app-platform",
+    "dashboard": "wix-owners-app-platform",
+    "dashboardManage": "wix-owners-app-platform",
+    "home": "wix-owners-app-platform",
+    "quickActions": "wix-owners-app-platform",
+    "customizer": "wix-owners-app-platform",
+    "platforms": "wix-owners-app-platform"
+  }
+}

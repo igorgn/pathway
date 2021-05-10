@@ -9,11 +9,11 @@ export const useNavigationButtonPressed = (
 
   useEffect(() => {
     if (!navigationEventListener.current) {
-      navigationEventListener.current = Navigation.events().registerNavigationButtonPressedListener(
-        event => {
+      navigationEventListener.current =
+        Navigation.events().registerNavigationButtonPressedListener(event => {
+          console.log(event);
           onPress(event.buttonId);
-        },
-      );
+        });
     }
 
     return () => {

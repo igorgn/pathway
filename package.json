@@ -1,11 +1,12 @@
 {
-  "name": "pathway",
+  "name": "one-app-module-habits",
   "version": "0.0.1",
   "private": true,
+  "main": "./src/module.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "android": "one-app-engine --mock-mode quickLogin -a —force-localhost",
+    "ios": "one-app-engine --mock-mode quickLogin -i —force-localhost",
+    "start": "one-app-engine --mock-mode quickLogin -ia —force-localhost",
     "test": "jest",
     "watch-test": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -13,26 +14,13 @@
     "detox-ios": "detox build --configuration ios.debug && detox test --configuration ios.debug",
     "server": "nodemon server/server.ts"
   },
+  "postinstall": "one-app-engine --setup",
   "dependencies": {
-    "@react-native-community/blur": "^3.6.0",
-    "@react-native-community/datetimepicker": "^3.4.6",
-    "@react-native-community/netinfo": "^6.0.0",
-    "@react-native-picker/picker": "^1.15.0",
-    "@reduxjs/toolkit": "^1.5.1",
-    "axios": "^0.21.1",
-    "date-fns": "^2.21.1",
-    "hoist-non-react-statics": "^3.3.2",
-    "lodash": "^4.17.21",
-    "react": "17.0.1",
-    "react-component-driver": "^0.10.0",
-    "react-native": "0.64.0",
-    "react-native-gesture-handler": "^1.10.3",
-    "react-native-navigation": "^7.13.0",
-    "react-native-navigation-hooks": "^6.3.0",
-    "react-native-reanimated": "^2.1.0",
-    "react-native-safe-area-context": "^3.2.0",
-    "react-native-ui-lib": "^5.22.2",
-    "react-redux": "^7.2.3"
+    "@reduxjs/toolkit": "1.5.1",
+    "axios": "0.21.1",
+    "date-fns": "2.21.1",
+    "react-component-driver": "0.10.0",
+    "react-redux": "7.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -58,13 +46,51 @@
     "metro-react-native-babel-preset": "^0.64.0",
     "node-fetch": "^2.6.1",
     "react-test-renderer": "17.0.1",
+    "react-test-renderer-utils": "^2.1.0",
+    "redux-component-driver": "^0.10.2",
     "superagent": "^6.1.0",
     "supertest": "^6.1.3",
     "ts-node": "^9.1.1",
     "typescript": "^3.8.3",
-    "react-test-renderer-utils": "^2.1.0",
-    "redux-component-driver": "^0.10.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "wix-one-app-engine": "ga",
+    "@wix/wix-one-app-platform": "ga",
+    "wix-owners-app-platform": "ga",
+    "wix-one-app-member-view": "ga",
+    "wix-react-native-ui-lib": "ga",
+    "wix-react-native-i18n": "5.156.0"
+  },
+  "peerDependencies": {
+    "wix-one-app-engine": "*"
+  },
+  "oneAppEngine": {
+    "admin": {
+      "platformModule": "wix-owners-app-platform",
+      "modules": [
+        "one-app-module-habits",
+        "demo-tab-module",
+        "wix-owners-app-platform",
+        "@wix/wix-one-app-platform",
+        "wix-one-app-member-view"
+      ],
+      "tabs": [
+        "dashboard",
+        "demoTab",
+        "plus"
+      ]
+    },
+    "places": {
+      "platformModule": "@wix/wix-one-app-platform",
+      "modules": [
+        "one-app-module-habits",
+        "@wix/wix-one-app-platform",
+        "demo-tab-module",
+        "wix-one-app-member-view"
+      ],
+      "tabs": [
+        "demoTab"
+      ]
+    }
   },
   "resolutions": {
     "@types/react": "^17"

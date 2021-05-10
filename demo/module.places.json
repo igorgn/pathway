@@ -1,0 +1,15 @@
+{
+  "name": "demo-tab-module",
+  "prefix": "demo",
+  "components": [
+    "demo.DemoTab"
+  ],
+  "hasTabs": true,
+  "hasDemoInit": true,
+  "hasManagerApps": false,
+  "hasClientApps": false,
+  "hasInstallableApps": false,
+  "hasQuickActions": false,
+  "hasActivityScreens": false,
+  "dbSchemes": {}
+}

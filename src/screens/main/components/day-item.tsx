@@ -1,7 +1,7 @@
 import {format, isSameMonth} from 'date-fns';
 import React from 'react';
 import {Pressable, StyleSheet} from 'react-native';
-import {Text, View} from 'react-native-ui-lib';
+import {Text, View} from 'wix-react-native-ui-lib';
 import {ActivityDay} from '../../../../types/interfaces/activities';
 
 const DATE_FORMAT = 'dd';

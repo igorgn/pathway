@@ -8,7 +8,7 @@ import {
   Platform,
   StyleSheet,
 } from 'react-native';
-import {Text, View} from 'react-native-ui-lib';
+import {Text, View} from 'wix-react-native-ui-lib';
 import {deleteActivity} from '../../../redux/activities/thunks/delete-activity';
 import {markActivityCompleted} from '../../../redux/activities/thunks/mark-activity-completed';
 import {useAppDispatch} from '../../../redux/redux-store';

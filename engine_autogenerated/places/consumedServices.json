@@ -1,0 +1,11 @@
+{
+  "quickActions": [
+    "one-app-module-habits"
+  ],
+  "contacts.profileWidgetsService": [
+    "@wix/wix-one-app-platform"
+  ],
+  "wix.platform.dashboardWidgetsService": [
+    "@wix/wix-one-app-platform"
+  ]
+}

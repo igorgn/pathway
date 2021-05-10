@@ -1,0 +1,11 @@
+{
+  "modes": {
+    "loggedOut": "@wix/wix-one-app-platform",
+    "place": "@wix/wix-one-app-platform",
+    "dashboard": "@wix/wix-one-app-platform",
+    "dashboardManage": "@wix/wix-one-app-platform",
+    "home": "@wix/wix-one-app-platform",
+    "dashboardManageAllUsers": "@wix/wix-one-app-platform"
+  },
+  "defaultMode": "place"
+}

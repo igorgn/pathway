@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import {View, Text} from 'react-native-ui-lib';
+import {View, Text} from 'wix-react-native-ui-lib';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectActivities} from '../../redux/activities/activities-selectors';
 import {ActivityItem} from './components/activity-item';
@@ -10,12 +10,14 @@ import {getActivities} from '../../redux/activities/thunks/get-activities';
 import {useNavigationButtonPressed} from '../../utils/hooks/use-navigation-button-pressed';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {Screens} from '../../../types/enums/screens';
+import {withReduxProvider} from '../../redux/with-redux-provider';
 
 export const MAIN_SCREEN_TEST_IDS = {
-  TAB_BAR_BUTTON: 'MAIN_SCREEN_TAB_BAR_BUTTON',
   EMPTY_STATE_CONTAINER: 'MAIN_SCREEN_EMPTY_STATE_CONTAINER',
   ACTIVITIES_LIST: 'MAIN_SCREEN_ACTIVITIES_LIST',
 };
+
+const TAB_BAR_BUTTON_ID = 'MAIN_SCREEN_TAB_BAR_BUTTON';
 
 const strings = {
   activities: 'Activities',
@@ -23,17 +25,24 @@ const strings = {
   toAddAnActivity: 'To add an activity press + button',
 };
 
-export const MainScreen: NavigationFunctionComponent = React.memo(
+const MainScreenComponent: NavigationFunctionComponent = React.memo(
   ({componentId}) => {
     const {activities, activitiesIDs} = useSelector(selectActivities);
     const dispatch = useDispatch();
 
     const pushAddActivityScreen = useCallback(
       (buttonId: string) => {
-        if (buttonId) {
-          Navigation.push(componentId, {
-            component: {name: Screens.AddActivity},
-          });
+        switch (buttonId) {
+          case TAB_BAR_BUTTON_ID:
+            Navigation.push(componentId, {
+              component: {name: Screens.AddActivity},
+            });
+            break;
+          case 'dismiss':
+            Navigation.pop(componentId);
+            break;
+          default:
+            break;
         }
       },
       [componentId],
@@ -92,13 +101,15 @@ export const MainScreen: NavigationFunctionComponent = React.memo(
   },
 );
 
+export const MainScreen = withReduxProvider(MainScreenComponent);
+
 MainScreen.options = {
   topBar: {
     title: {text: strings.activities},
     rightButtons: [
       {
         icon: icons.buttons.add,
-        id: MAIN_SCREEN_TEST_IDS.TAB_BAR_BUTTON,
+        id: TAB_BAR_BUTTON_ID,
         testID: testIDs.addActivityTabBarButton,
       },
     ],

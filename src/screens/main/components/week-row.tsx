@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View} from 'react-native-ui-lib';
+import {View} from 'wix-react-native-ui-lib';
 import {ActivityDay} from '../../../../types/interfaces/activities';
 import {DayItem} from './day-item';
 
