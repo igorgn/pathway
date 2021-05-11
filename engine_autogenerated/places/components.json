@@ -1,6 +1,7 @@
 {
   "one-app-module-habits.MainScreen": "one-app-module-habits",
   "one-app-module-habits.AddActivityScreen": "one-app-module-habits",
+  "one-app-module-habits.ViewActivities": "one-app-module-habits",
   "wix.platform.EditTabPermissionsScreen": "@wix/wix-one-app-platform",
   "wix.platform.BlockedScreenError": "@wix/wix-one-app-platform",
   "wix.platform.KillSwitchScreen": "@wix/wix-one-app-platform",
@@ -95,6 +96,7 @@
   "wix.platform.adminAppDownloadScreen": "@wix/wix-one-app-platform",
   "wix.platform.downloadAppScreen": "@wix/wix-one-app-platform",
   "wix.platform.downloadAppBanner": "@wix/wix-one-app-platform",
+  "wix.platform.adminRolloutWidget": "@wix/wix-one-app-platform",
   "demo.DemoTab": "demo-tab-module",
   "wix.memberView.main": "wix-one-app-member-view",
   "wix.memberView.mainComponent": "wix-one-app-member-view",

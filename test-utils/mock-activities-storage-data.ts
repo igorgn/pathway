@@ -34,7 +34,12 @@ const oneActivityOneDayCompleted: Activities = {
   activitiesIDs: ['test-uuid'],
 };
 
+const emptyActivitiesState = {
+  activities: emptyActivities,
+};
+
 export const mockActivitiesStorageData = {
+  emptyActivitiesState,
   emptyActivities,
   oneActivityZeroDaysCompleted,
   oneActivityOneDayCompleted,

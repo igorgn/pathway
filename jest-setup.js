@@ -1,6 +1,6 @@
-jest.mock(
-  './node_modules/react-native/Libraries/Animated/NativeAnimatedHelper',
-);
+// jest.mock(
+//   './node_modules/react-native/Libraries/Animated/NativeAnimatedHelper',
+// );
 jest.mock('axios');
 
 jest.mock('uuid', () => {

@@ -3,11 +3,13 @@
   "prefix": "one-app-module-habits",
   "components": [
     "one-app-module-habits.MainScreen",
-    "one-app-module-habits.AddActivityScreen"
+    "one-app-module-habits.AddActivityScreen",
+    "one-app-module-habits.ViewActivities"
   ],
   "hasTabs": false,
   "consumedServices": [
-    "quickActions"
+    "quickActions",
+    "wix.platform.dashboardWidgetsService"
   ],
   "hasDemoInit": false,
   "hasManagerApps": false,

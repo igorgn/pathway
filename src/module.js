@@ -11,6 +11,12 @@ export default class OneAppHabitsModule {
           require('./screens/add-activity/add-activity-screen')
             .AddActivityScreen,
       },
+      {
+        id: 'one-app-module-habits.ViewActivities',
+        generator: () =>
+          require('./widgets/view-activities-widget/view-activities-widget')
+            .ViewActivitiesWidget,
+      },
     ];
   }
 
@@ -32,6 +38,14 @@ export default class OneAppHabitsModule {
           },
         ];
       },
+      'wix.platform.dashboardWidgetsService': [
+        {
+          id: 'add-activity-widget',
+          displayName: 'Add activity',
+          startLoadingComponent: props => null,
+          componentId: 'one-app-module-habits.ViewActivities',
+        },
+      ],
     };
   }
 }

@@ -3,8 +3,8 @@ import {mockActivitiesStorageData} from '../../test-utils/mock-activities-storag
 import {Navigation} from 'react-native-navigation';
 import {AddActivityScreenDriver} from '../../src/screens/add-activity/add-activity-screen.driver';
 
-describe('Add activity screen component test', () => {
-  const componentID = 'activity_screen';
+describe('Activities widget test', () => {
+  const componentID = 'activity_widget';
 
   const store = createStore({
     activities: mockActivitiesStorageData.oneActivityOneDayCompleted,

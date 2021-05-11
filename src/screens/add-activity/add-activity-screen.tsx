@@ -63,6 +63,7 @@ const AddActivityScreenComponent: NavigationFunctionComponent = ({
           testID={ADD_ACTIVITY_SCREEN_TEST_IDS.TEXT_FIELD}
         />
         <Button
+          marginT-s4
           onPress={handleAddActivity}
           bg-grey40
           label={strings.addActivity}

@@ -23,3 +23,9 @@ export interface ActivityDay {
   id: string;
   completed: boolean;
 }
+
+export interface ActivityData {
+  name: string;
+  daysCompleted: number;
+  id: string;
+}
