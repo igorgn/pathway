@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useMemo} from 'react';
-import {Text, View} from 'react-native-ui-lib';
+import {Text, View} from 'wix-react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
 import {Screens} from '../../../types/enums/screens';
 import {useDispatch, useSelector} from 'react-redux';
