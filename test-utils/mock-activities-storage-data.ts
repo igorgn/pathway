@@ -20,12 +20,12 @@ const oneActivityZeroDaysCompleted: Activities = {
 const oneActivityOneDayCompleted: Activities = {
   activities: {
     ['test-uuid']: {
-      daysIDs: ['2021-05-01'],
+      daysIDs: ['2021-05-03'],
       id: 'test-uuid',
       name: 'Yoga',
       days: {
-        '2021-05-01': {
-          id: '2021-05-01',
+        '2021-05-03': {
+          id: '2021-05-03',
           completed: true,
         },
       },
@@ -44,6 +44,6 @@ export const mockActivitiesStorageData = {
   oneActivityZeroDaysCompleted,
   oneActivityOneDayCompleted,
   activityName: 'Yoga',
-  dayToMark: '2021-05-01',
+  dayToMark: '2021-05-03',
   id: 'test-uuid',
 };
