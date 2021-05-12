@@ -5,9 +5,19 @@ import {mockActivitiesStorageData} from '../../test-utils/mock-activities-storag
 import {writeToTestActivities} from '../../test-utils/write-to-test-activities';
 
 describe('get activities e2e', () => {
-  it('should respond with one activity', async () => {
-    const server = initializeServer(envVariables.test).listen(3000, () => {});
+  let server: Server | null = null;
 
+  beforeEach(() => {
+    server = initializeServer(envVariables.test).listen(3000, () => {});
+  });
+
+  afterEach(() => {
+    if (server) {
+      server.close();
+    }
+  });
+
+  it('should respond with one activity', async () => {
     await writeToTestActivities(
       mockActivitiesStorageData.oneActivityOneDayCompleted,
     );
@@ -19,7 +29,5 @@ describe('get activities e2e', () => {
     const data = await response.json();
 
     expect(data).toEqual(mockActivitiesStorageData.oneActivityOneDayCompleted);
-
-    server.close();
   });
 });
