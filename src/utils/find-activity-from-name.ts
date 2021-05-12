@@ -6,6 +6,5 @@ export const findActivityFromName = (activities: Activities, name: string) => {
   );
 
   const activity = activitiesArr.find(val => val.name === name);
-
   return activity;
 };

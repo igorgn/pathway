@@ -12,12 +12,8 @@ describe('Activities widget test', () => {
 
   jest.spyOn(Navigation, 'pop');
 
-  let screen: AddActivityScreenDriver;
-
-  beforeEach(() => {
-    screen = new AddActivityScreenDriver(store).setProps({
-      componentId: componentID,
-    });
+  const screen = new AddActivityScreenDriver(store).setProps({
+    componentId: componentID,
   });
 
   afterEach(() => {

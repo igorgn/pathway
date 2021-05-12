@@ -1,18 +1,17 @@
-import {act} from 'react-test-renderer';
 import {Action, Store} from 'redux';
 import {ReduxComponentDriver} from 'redux-component-driver';
 import {RootState} from '../../redux/redux-store';
 import {ACTIVITY_ITEM_TEST_IDS} from './components/activity-item';
 import {DAY_ITEM_TEST_IDS} from './components/day-item';
-import {MainScreen, MAIN_SCREEN_TEST_IDS} from './main-screen';
+import {MainScreenComponent, MAIN_SCREEN_TEST_IDS} from './main-screen';
 
 export class MainScreenDriver extends ReduxComponentDriver<
-  typeof MainScreen,
+  typeof MainScreenComponent,
   RootState,
   Action<any>
 > {
   constructor(store: Store) {
-    super(MainScreen, store);
+    super(MainScreenComponent, store);
   }
 
   getEmptyStateContainer() {

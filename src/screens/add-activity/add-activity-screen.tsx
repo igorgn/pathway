@@ -20,7 +20,7 @@ export const ADD_ACTIVITY_SCREEN_TEST_IDS = {
   CTA: 'CTA',
 };
 
-const AddActivityScreenComponent: NavigationFunctionComponent = ({
+export const AddActivityScreenComponent: NavigationFunctionComponent = ({
   componentId,
 }) => {
   const activities = useSelector(selectActivities);

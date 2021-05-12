@@ -11,7 +11,6 @@ export const useNavigationButtonPressed = (
     if (!navigationEventListener.current) {
       navigationEventListener.current =
         Navigation.events().registerNavigationButtonPressedListener(event => {
-          console.log(event);
           onPress(event.buttonId);
         });
     }

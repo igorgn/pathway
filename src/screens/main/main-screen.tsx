@@ -5,7 +5,6 @@ import {selectActivities} from '../../redux/activities/activities-selectors';
 import {ActivityItem} from './components/activity-item';
 import {FlatList, ListRenderItem} from 'react-native';
 import {icons} from '../../assets/icons/icons';
-import {testIDs} from '../../utils/test-ids';
 import {getActivities} from '../../redux/activities/thunks/get-activities';
 import {useNavigationButtonPressed} from '../../utils/hooks/use-navigation-button-pressed';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
@@ -15,6 +14,8 @@ import {withReduxProvider} from '../../redux/with-redux-provider';
 export const MAIN_SCREEN_TEST_IDS = {
   EMPTY_STATE_CONTAINER: 'MAIN_SCREEN_EMPTY_STATE_CONTAINER',
   ACTIVITIES_LIST: 'MAIN_SCREEN_ACTIVITIES_LIST',
+  MAIN_SCREEN: 'MAIN_SCREEN',
+  ADD_BUTTON: 'ADD_BUTTON',
 };
 
 const TAB_BAR_BUTTON_ID = 'MAIN_SCREEN_TAB_BAR_BUTTON';
@@ -25,7 +26,7 @@ const strings = {
   toAddAnActivity: 'To add an activity press + button',
 };
 
-const MainScreenComponent: NavigationFunctionComponent = React.memo(
+export const MainScreenComponent: NavigationFunctionComponent = React.memo(
   ({componentId}) => {
     const {activities, activitiesIDs} = useSelector(selectActivities);
     const dispatch = useDispatch();
@@ -92,7 +93,7 @@ const MainScreenComponent: NavigationFunctionComponent = React.memo(
     );
 
     return (
-      <View flex useSafeArea testID={testIDs.mainScreen}>
+      <View flex useSafeArea testID={MAIN_SCREEN_TEST_IDS.MAIN_SCREEN}>
         <View flex padding-s4>
           {activitiesIDs.length ? renderActivityList() : renderEmptyState()}
         </View>
@@ -110,7 +111,7 @@ MainScreen.options = {
       {
         icon: icons.buttons.add,
         id: TAB_BAR_BUTTON_ID,
-        testID: testIDs.addActivityTabBarButton,
+        testID: MAIN_SCREEN_TEST_IDS.ADD_BUTTON,
       },
     ],
   },
