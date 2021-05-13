@@ -13,7 +13,7 @@
     "detox-android": "detox build --configuration android.debug && detox test --configuration android.debug",
     "detox-ios": "detox build --configuration ios.debug && detox test --configuration ios.debug",
     "server": "nodemon server/server.ts",
-    "release": "mltci release",
+    "release": "wnpm-release --no-shrinkwrap",
     "customPublish": "mltci release"
   },
   "postinstall": "one-app-engine --setup",
@@ -61,10 +61,11 @@
     "wix-owners-app-platform": "ga",
     "wix-one-app-member-view": "ga",
     "wix-react-native-ui-lib": "ga",
-    "wix-react-native-i18n": "5.156.0"
+    "wix-react-native-i18n": "5.156.0",
+    "wnpm-ci": "latest"
   },
   "publishConfig": {
-    "registry": "http://npm.dev.wixpress.com/"
+    "registry": "https://repo.dev.wixpress.com/artifactory/api/npm/npm-local"
   },
   "peerDependencies": {
     "wix-one-app-engine": "*"
